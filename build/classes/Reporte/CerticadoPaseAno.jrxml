@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Comprobante" pageWidth="396" pageHeight="255" orientation="Landscape" columnWidth="356" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5ddc186-cbb7-4ecd-a0b3-1ea4ec906d5a">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="598"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="388"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SanPedro"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="logo" class="java.lang.Object"/>
+	<parameter name="pMatricula" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT concat( alumno.nombres,' ',alumno.apellidos)as Nombres ,catequista.nombres as Catequista,comunidad.nombre as Comunidad,(SELECT catequista.Nombres
+FROM catequista
+INNER JOIN comunidad ON comunidad.IdComunidad=catequista.IdComunidad
+WHERE cordinador = 1 AND catequista.IdComunidad=matricula.IdComunidad) as Coordinador,parroco.nombres as parroco, niveles.nombre as Nivel,
+CONCAT(AnoInicio,'-', AnoFin) AS periodo 
+FROM matricula
+INNER JOIN alumno ON alumno.IdAlumno = matricula.IdAlumno
+INNER JOIN comunidad ON comunidad.IdComunidad = matricula.IdComunidad
+INNER JOIN niveles ON niveles.IdNivel = matricula.IdNivel 
+INNER JOIN parroco ON  parroco.IdParroco = matricula.IdParroco
+INNER JOIN catequista ON catequista.IdCatequista = matricula.IdCatequista
+WHERE Idmatricula = $P{pMatricula}]]>
+	</queryString>
+	<field name="Nombres" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Nombres"/>
+	</field>
+	<field name="Catequista" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Catequista"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="catequista"/>
+	</field>
+	<field name="Comunidad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Comunidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="comunidad"/>
+	</field>
+	<field name="Coordinador" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Coordinador"/>
+	</field>
+	<field name="parroco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="parroco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="parroco"/>
+	</field>
+	<field name="Nivel" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Nivel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="niveles"/>
+	</field>
+	<field name="periodo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="periodo"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="92" splitType="Stretch">
+			<staticText>
+				<reportElement x="70" y="0" width="280" height="24" uuid="fd639787-77b7-4950-bcb7-28703d933674"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="DejaVu Serif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARROQUIA "SAN PEDRO"]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="69" height="68" uuid="fad6c3bf-cf08-4615-9cf0-50e6d581f66c"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="70" y="24" width="280" height="20" uuid="b12c559f-dc2f-450a-8bc4-de0bb09fc00e"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Arquidiócesis de Portoviejo Para Manabí - Ecuador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="40" width="180" height="15" uuid="67916c02-24be-4d7a-ab69-bb43cc3d91d2"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Av.Guayaquil y 12 de Marzo     Telf: 052 655 135]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="55" width="280" height="24" uuid="482ee83e-2f00-431d-adf3-40cf6b4d1bf0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Comunidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="134" splitType="Immediate">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<line>
+				<reportElement x="90" y="13" width="260" height="1" uuid="22ee9c77-4831-423b-aff6-dbfb7e316986">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="18" width="120" height="20" uuid="843d23f0-4ee2-4085-ab09-ea12316f7794"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Ha aprobado el nivel de  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="50" height="20" uuid="65f3ab74-6738-4c62-8acd-7e24887121e7"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Párroco :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="103" width="160" height="20" uuid="800872e3-4680-42ca-bd67-30f07dd556aa"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Catequista]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="103" width="150" height="20" uuid="2e014b6d-0b4a-4a4b-8f3d-a8392ae11367"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Coordinador]]></text>
+			</staticText>
+			<line>
+				<reportElement x="200" y="102" width="150" height="1" uuid="96ae804b-136c-41b6-aad6-64141a55396d"/>
+			</line>
+			<line>
+				<reportElement x="10" y="102" width="160" height="1" uuid="1056f0a2-52b1-4bbe-b05c-7be9da6169fb"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="86" height="20" uuid="ecb7525e-b449-4fff-ad27-e2d02812518f"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Certificamos que  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="38" width="70" height="20" uuid="2c652781-390b-49c3-a229-c74710c98d98"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[En el periódo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="-1" width="264" height="14" uuid="32f6f9d4-797b-423a-b94d-6f825f57f022">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d3fb2cf1-58c2-4ff0-a9e7-90f5f5d316ab"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="18" width="230" height="20" uuid="bcc97032-81dc-42ab-894e-3ac496de5774">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c91e3f05-a282-46b1-ad0d-bf4397c8b7f8"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nivel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="39" width="130" height="20" uuid="bd21acf2-c7c8-44fd-b503-688f13dd9ae8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d2908bcf-3bc1-482e-825f-8f3173375aee"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periodo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="61" width="194" height="20" uuid="50f4be21-ab82-410f-8ce8-8903bfb3da75">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="38cf47cf-b6c9-4698-9116-f91cc2b423fa"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{parroco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="90" width="150" height="20" uuid="3ea219e1-2b77-4497-baca-ddde01a2a6f8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d357c3e1-50e9-4303-b45b-08abe52d2ddd"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Coordinador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="90" width="160" height="20" uuid="60c4dc9b-e73f-4cc8-b105-69bc6121e605">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f66bfcd8-2f55-4f2f-b254-6e9715957a16"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Catequista}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="266" y="65" width="84" height="14" uuid="d5df1298-06bb-43ef-8f36-7cf722f37912"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

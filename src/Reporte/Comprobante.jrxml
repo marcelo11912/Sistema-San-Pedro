@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Comprobante" pageWidth="396" pageHeight="255" orientation="Landscape" columnWidth="356" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5ddc186-cbb7-4ecd-a0b3-1ea4ec906d5a">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="logo" class="java.lang.Object"/>
+	<parameter name="pTipoComp" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="nivel" class="java.lang.String"/>
+	<field name="comunidad" class="java.lang.String"/>
+	<field name="anoFin" class="java.lang.String"/>
+	<field name="valor" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement x="70" y="0" width="280" height="24" uuid="fd639787-77b7-4950-bcb7-28703d933674"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="DejaVu Serif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARROQUIA "SAN PEDRO"]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="69" height="68" uuid="fad6c3bf-cf08-4615-9cf0-50e6d581f66c"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="70" y="24" width="280" height="20" uuid="b12c559f-dc2f-450a-8bc4-de0bb09fc00e"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Arquidiócesis de Portoviejo Para Manabí - Ecuador]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="44" width="280" height="25" uuid="6bdbf48f-2721-4de1-a66f-9901cfabda82"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pTipoComp}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="5" width="40" height="20" uuid="055d060e-ba1d-43b0-be9c-f317329ef1d8"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="5" width="50" height="20" uuid="60539a46-768a-4c6a-9edf-9bd733b03ccf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6fa00c54-b3ca-4909-932e-176707255a66"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="40" y="5" width="10" height="20" uuid="13afe8dd-3c13-4e26-82c1-9fa1d1eb4099"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="114" splitType="Immediate">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="0" width="60" height="15" uuid="c310ad39-ab01-4147-b0d4-676dd25a1517"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombres   :  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="60" height="15" uuid="d82eef30-9a2c-4603-bec0-256bcafd30a4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nivel         :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="60" height="15" uuid="c29312b8-e42d-47c5-a5cc-1c2e326ecbfa"/>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Lugar        :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="0" width="240" height="15" uuid="b9225f12-4c76-4def-8e8e-1d1a4fd351f9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df9e11bc-ed2f-477b-bb81-34d57b5bdd4f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="61" width="60" height="15" uuid="8f6223e0-70ef-42b0-ba10-f3c3f855d972"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Período     :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="20" width="170" height="15" uuid="da4c1396-98a6-4d3b-b111-b4b18c3aab96">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea1e2113-04de-4f74-a844-d6f50bf71686"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nivel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="40" width="170" height="15" uuid="27362b3f-a139-4b2b-88df-a3fe12efa508">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5b057ca7-08fd-4e32-9ed2-388f36ee7896"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{comunidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="61" width="110" height="15" uuid="2ddc8281-3170-423b-ba92-db4b1f53e452">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="095fefe3-9f1a-438e-9d20-cb63bec05646"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{anoFin}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="90" width="80" height="15" uuid="03c1c49f-ce5c-4fa2-8d5c-9e51ab940402"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de Impresión :]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="80" y="90" width="80" height="15" uuid="2b292a8e-faed-4107-9927-9d2c73526eed"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="170" y="90" width="180" height="15" uuid="67916c02-24be-4d7a-ab69-bb43cc3d91d2"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Av.Guayaquil y 12 de Marzo     Telf: 052 655 135]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
